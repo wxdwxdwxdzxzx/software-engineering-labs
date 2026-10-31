@@ -10,8 +10,7 @@ autonumber
 actor 买家
 boundary 商品详情页 as UI
 control 预约服务 as Service
-database 商品与预约库 as DB
-control 日志服务 as Log
+database "商品、预约与日志库" as DB
 
 买家 -> UI : 点击预约
 UI -> Service : 预约(买家ID, 商品ID)
@@ -27,9 +26,8 @@ else 商品非已发布（旧页面或他人抢先）
     Service --> UI : 商品状态已变更，当前无法预约；请刷新
   end
 else 商品仍已发布
-  Service -> DB : 同一事务：创建待确认预约＋商品改已预约
+  Service -> DB : 同一事务：创建待确认预约＋商品改已预约＋写操作日志
   DB --> Service : 提交成功
-  Service -> Log : 记录操作人、对象与前后状态
   Service --> UI : 预约成功；联系方式暂不展示
 end
 note over Service,DB

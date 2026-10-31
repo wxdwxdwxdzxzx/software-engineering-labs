@@ -6,32 +6,32 @@ skinparam stateBackgroundColor #F3F8FC
 skinparam stateBorderColor #355C7D
 skinparam ArrowColor #54718B
 skinparam shadowing false
-[*] --> 草稿 : 卖家创建
-草稿 --> [*] : 卖家物理删除
-草稿 --> 待审核 : 提交审核
-待审核 --> 审核驳回 : 管理员驳回
-审核驳回 --> 待审核 : 卖家修改后重提
-待审核 --> 已发布 : 管理员通过
-已发布 --> 待审核 : 修改价格或描述
-已发布 --> 已下架 : 卖家主动下架 [无有效预约]
-已发布 --> 已预约 : 买家预约 [商品仍已发布]
-已预约 --> 已发布 : 卖家拒绝／买家取消／24小时超时
-已预约 --> 待交易 : 卖家同意
-待交易 --> 已发布 : 买家或卖家取消
-待交易 --> 已售出 : 卖家确认线下交易完成
-已发布 --> 违规下架 : 管理员核实违规
-已预约 --> 违规下架 : 管理员核实违规／取消有效预约
-待交易 --> 违规下架 : 管理员核实违规／取消预约并隐藏联系
-note right of 已下架
-  是否可重新上架：待确认。
-end note
-note right of 违规下架
-  终止状态，不得恢复上架。
-end note
-note bottom of 已预约
-  预约=待确认；禁止卖家修改或主动下架。
-end note
-note bottom of 待交易
-  预约=待交易；仅交易双方可看联系方式。
-end note
+skinparam linetype ortho
+skinparam nodesep 55
+skinparam ranksep 55
+top to bottom direction
+
+[*] -down-> 草稿 : 创建
+草稿 -right-> [*]
+草稿 -down-> 待审核 : 提交
+待审核 -down-> 已发布 : 通过
+待审核 -right-> 审核驳回
+审核驳回 -left-> 待审核
+已发布 -up-> 待审核
+已发布 -right-> 已下架
+已发布 -down-> 已预约 : 预约
+已预约 -up-> 已发布
+已预约 -down-> 待交易 : 同意
+待交易 -up-> 已发布
+待交易 -down-> 已售出 : 卖家确认
+已发布 -right-> 违规下架
+已预约 -right-> 违规下架
+待交易 -right-> 违规下架
+
+legend bottom
+  草稿可删除；审核驳回后修改重提；已发布改价或描述须重审。
+  已预约可因拒绝、买家取消或超时回到已发布；待交易双方均可取消。
+  仅已发布且无有效预约可主动下架；重新上架规则待确认。
+  违规下架同时取消有效预约、隐藏联系方式，且不得恢复上架。
+endlegend
 @enduml

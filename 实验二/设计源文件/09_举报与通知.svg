@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+<rect x="0" y="0" width="1440" height="900" rx="0" fill="#F6F9FC" stroke="none" stroke-width="1"/>
+<rect x="0" y="0" width="1440" height="76" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="0" y="75" width="1440" height="1" rx="0" fill="#D9E4EC" stroke="none" stroke-width="1"/>
+<rect x="34" y="22" width="34" height="34" rx="10" fill="#245F95" stroke="none" stroke-width="1"/>
+<text x="51" y="46" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" text-anchor="middle">闲</text>
+<text x="80" y="49" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" text-anchor="start">拾光 · 二手交易</text>
+<text x="420" y="48" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="600" text-anchor="start">发现</text>
+<text x="565" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">发布商品</text>
+<text x="710" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的商品</text>
+<text x="855" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的预约</text>
+<text x="1000" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">管理后台</text>
+<rect x="1220" y="23" width="150" height="32" rx="16" fill="#E9F3EE" stroke="none" stroke-width="1"/><text x="1295.0" y="45" fill="#277450" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">买家</text>
+<text x="45" y="135" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" text-anchor="start">商品举报与站内通知</text>
+<text x="45" y="167" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="14" font-weight="400" text-anchor="start">举报必须填写原因；处理结果在站内显示</text>
+<rect x="55" y="225" width="620" height="540" rx="18" fill="#FFFFFF" stroke="#DCE7EF" stroke-width="1"/>
+<text x="95" y="280" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">举报商品</text>
+<text x="95" y="340" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">商品：机械键盘 · 九成新</text>
+<text x="95" y="390" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="500" text-anchor="start">举报原因</text><rect x="95" y="403" width="500" height="52" rx="10" fill="#FFFFFF" stroke="#CBD8E2" stroke-width="1"/><text x="111" y="437" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">请描述违规情况</text>
+<rect x="95" y="570" width="260" height="50" rx="12" fill="#245F95" stroke="none" stroke-width="1"/><text x="225.0" y="602" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="600" text-anchor="middle">提交举报</text>
+<rect x="715" y="225" width="670" height="540" rx="18" fill="#FFFFFF" stroke="#DCE7EF" stroke-width="1"/>
+<text x="760" y="280" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" text-anchor="start">站内通知</text>
+<rect x="760" y="335" width="106" height="32" rx="16" fill="#E7F5EC" stroke="none" stroke-width="1"/><text x="813.0" y="357" fill="#28774B" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">处理完成</text>
+<text x="760" y="405" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="19" font-weight="400" text-anchor="start">你的商品举报已核实，商品已违规下架。</text>
+<text x="760" y="452" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="400" text-anchor="start">若举报驳回，也会显示相应处理结果。</text>
+<text x="760" y="595" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="400" text-anchor="start">通知渠道是乙方设计范围限定。</text>
+</svg>

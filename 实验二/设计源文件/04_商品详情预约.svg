@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+<rect x="0" y="0" width="1440" height="900" rx="0" fill="#F6F9FC" stroke="none" stroke-width="1"/>
+<rect x="0" y="0" width="1440" height="76" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="0" y="75" width="1440" height="1" rx="0" fill="#D9E4EC" stroke="none" stroke-width="1"/>
+<rect x="34" y="22" width="34" height="34" rx="10" fill="#245F95" stroke="none" stroke-width="1"/>
+<text x="51" y="46" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" text-anchor="middle">闲</text>
+<text x="80" y="49" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" text-anchor="start">拾光 · 二手交易</text>
+<text x="420" y="48" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="600" text-anchor="start">发现</text>
+<text x="565" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">发布商品</text>
+<text x="710" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的商品</text>
+<text x="855" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的预约</text>
+<text x="1000" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">管理后台</text>
+<rect x="1220" y="23" width="150" height="32" rx="16" fill="#E9F3EE" stroke="none" stroke-width="1"/><text x="1295.0" y="45" fill="#277450" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">买家</text>
+<text x="45" y="135" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" text-anchor="start">商品详情</text>
+<text x="45" y="167" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="14" font-weight="400" text-anchor="start">提交预约时再次检查商品最新状态；未获同意前隐藏联系方式</text>
+<rect x="48" y="215" width="710" height="535" rx="22" fill="#E6F2F5" stroke="none" stroke-width="1"/>
+<rect x="210" y="320" width="385" height="230" rx="28" fill="#81B6CF" stroke="none" stroke-width="1"/>
+<text x="402" y="445" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="40" font-weight="700" text-anchor="middle">机械键盘</text>
+<rect x="800" y="215" width="585" height="535" rx="22" fill="#FFFFFF" stroke="#DCE7EF" stroke-width="1"/>
+<rect x="835" y="250" width="106" height="32" rx="16" fill="#E3EFF8" stroke="none" stroke-width="1"/><text x="888.0" y="272" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">已发布</text>
+<text x="835" y="336" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" text-anchor="start">机械键盘 · 九成新</text>
+<text x="835" y="395" fill="#D55D4E" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="34" font-weight="700" text-anchor="start">¥ 180</text>
+<text x="835" y="465" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">卖家：同校用户  |  分类：数码</text>
+<text x="835" y="513" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">描述：外观完好，支持线下当面交易。</text>
+<text x="835" y="560" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="400" text-anchor="start">联系方式：卖家同意预约后可见</text>
+<rect x="835" y="625" width="490" height="50" rx="12" fill="#245F95" stroke="none" stroke-width="1"/><text x="1080.0" y="657" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="600" text-anchor="middle">发起预约</text>
+</svg>

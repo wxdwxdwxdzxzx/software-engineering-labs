@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+<rect x="0" y="0" width="1440" height="900" rx="0" fill="#F6F9FC" stroke="none" stroke-width="1"/>
+<rect x="0" y="0" width="1440" height="76" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="0" y="75" width="1440" height="1" rx="0" fill="#D9E4EC" stroke="none" stroke-width="1"/>
+<rect x="34" y="22" width="34" height="34" rx="10" fill="#245F95" stroke="none" stroke-width="1"/>
+<text x="51" y="46" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" text-anchor="middle">闲</text>
+<text x="80" y="49" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" text-anchor="start">拾光 · 二手交易</text>
+<text x="420" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">发现</text>
+<text x="565" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">发布商品</text>
+<text x="710" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的商品</text>
+<text x="855" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的预约</text>
+<text x="1000" y="48" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="600" text-anchor="start">管理后台</text>
+<rect x="1220" y="23" width="150" height="32" rx="16" fill="#E9F3EE" stroke="none" stroke-width="1"/><text x="1295.0" y="45" fill="#277450" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">管理员</text>
+<text x="45" y="135" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" text-anchor="start">统计与操作日志</text>
+<text x="45" y="167" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="14" font-weight="400" text-anchor="start">每日新上架按审核通过日；在售仅统计当前已发布</text>
+<rect x="55" y="220" width="405" height="180" rx="18" fill="#FFFFFF" stroke="#DCE7EF" stroke-width="1"/>
+<text x="90" y="275" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">今日新上架</text>
+<text x="90" y="355" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="44" font-weight="700" text-anchor="start">24</text>
+<rect x="490" y="220" width="405" height="180" rx="18" fill="#FFFFFF" stroke="#DCE7EF" stroke-width="1"/>
+<text x="525" y="275" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">数码类当前在售</text>
+<text x="525" y="355" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="44" font-weight="700" text-anchor="start">38</text>
+<rect x="925" y="220" width="460" height="180" rx="18" fill="#FFFFFF" stroke="#DCE7EF" stroke-width="1"/>
+<text x="960" y="275" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">图书类当前在售</text>
+<text x="960" y="355" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="44" font-weight="700" text-anchor="start">17</text>
+<rect x="55" y="440" width="1330" height="350" rx="18" fill="#FFFFFF" stroke="#DCE7EF" stroke-width="1"/>
+<text x="95" y="495" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="700" text-anchor="start">关键操作日志</text>
+<text x="95" y="520" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="500" text-anchor="start">商品编号</text><rect x="95" y="533" width="330" height="52" rx="10" fill="#FFFFFF" stroke="#CBD8E2" stroke-width="1"/><text x="111" y="567" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">输入商品编号</text>
+<text x="455" y="520" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="500" text-anchor="start">操作人</text><rect x="455" y="533" width="330" height="52" rx="10" fill="#FFFFFF" stroke="#CBD8E2" stroke-width="1"/><text x="471" y="567" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">用户 ID / SYSTEM</text>
+<text x="815" y="520" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="16" font-weight="500" text-anchor="start">时间范围</text><rect x="815" y="533" width="330" height="52" rx="10" fill="#FFFFFF" stroke="#CBD8E2" stroke-width="1"/><text x="831" y="567" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">选择起止时间</text>
+<rect x="1170" y="533" width="155" height="50" rx="12" fill="#245F95" stroke="none" stroke-width="1"/><text x="1247.5" y="565" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="600" text-anchor="middle">查询</text>
+<text x="95" y="675" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">2026-10-31  预约超时取消   SYSTEM   商品 #P1209   已预约 → 已发布</text>
+<text x="95" y="725" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">2026-10-31  管理员审核通过   ADMIN01   商品 #P1188   待审核 → 已发布</text>
+</svg>

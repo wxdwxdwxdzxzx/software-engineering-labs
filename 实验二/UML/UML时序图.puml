@@ -14,7 +14,7 @@ database "商品、预约与日志库" as DB
 
 买家 -> UI : 点击预约
 UI -> Service : 预约(买家ID, 商品ID)
-Service -> DB : 原子检查商品最新状态与现有有效预约
+Service -> DB : 开始事务并锁定商品；检查最新状态与有效预约
 alt 同一买家已有有效预约（重复点击）
   DB --> Service : 返回本人现有预约
   Service --> UI : 已预约成功／请勿重复提交
@@ -33,5 +33,6 @@ end
 note over Service,DB
   并发请求只能一人成功；失败请求不得创建有效预约。
   同一商品有效预约数量上限为1。
+  校验与写入位于同一事务；失败或重复分支结束事务。
 end note
 @enduml

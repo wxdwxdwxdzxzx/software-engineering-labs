@@ -9,8 +9,7 @@
 <text x="565" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">发布商品</text>
 <text x="710" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的商品</text>
 <text x="855" y="48" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="600" text-anchor="start">我的预约</text>
-<text x="1000" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">管理后台</text>
-<rect x="1220" y="23" width="150" height="32" rx="16" fill="#E9F3EE" stroke="none" stroke-width="1"/><text x="1295.0" y="45" fill="#277450" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">买家 / 卖家</text>
+<rect x="1220" y="23" width="150" height="32" rx="16" fill="#E9F3EE" stroke="none" stroke-width="1"/><text x="1295.0" y="45" fill="#277450" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">买家</text>
 <text x="45" y="135" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" text-anchor="start">我的预约与交易</text>
 <text x="45" y="167" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="14" font-weight="400" text-anchor="start">待确认、待交易、已取消和历史预约分别展示</text>
 <rect x="55" y="220" width="1330" height="190" rx="18" fill="#FFFFFF" stroke="#DCE7EF" stroke-width="1"/>
@@ -22,7 +21,6 @@
 <rect x="95" y="470" width="106" height="32" rx="16" fill="#E7F5EC" stroke="none" stroke-width="1"/><text x="148.0" y="492" fill="#28774B" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">待交易</text>
 <text x="95" y="545" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" text-anchor="start">设计书籍套装 · 卖家已同意</text>
 <text x="95" y="590" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">电话：仅当前买卖双方可见  ·  线下当面交易</text>
-<rect x="900" y="505" width="180" height="50" rx="12" fill="#E5EFF6" stroke="none" stroke-width="1"/><text x="990.0" y="537" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="600" text-anchor="middle">取消交易</text>
-<rect x="1100" y="505" width="220" height="50" rx="12" fill="#245F95" stroke="none" stroke-width="1"/><text x="1210.0" y="537" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="600" text-anchor="middle">确认交易完成</text>
+<rect x="1100" y="505" width="220" height="50" rx="12" fill="#E5EFF6" stroke="none" stroke-width="1"/><text x="1210.0" y="537" fill="#245F95" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="600" text-anchor="middle">取消交易</text>
 <text x="70" y="710" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="400" text-anchor="start">历史记录：已拒绝 / 已取消 / 超时取消 / 已完成；不可物理删除。</text>
 </svg>

@@ -6,47 +6,44 @@ skinparam componentBackgroundColor #F3F8FC
 skinparam componentBorderColor #355C7D
 skinparam ArrowColor #54718B
 skinparam shadowing false
+skinparam linetype ortho
 left to right direction
-
-actor 普通用户
-actor 管理员
-component "买家／卖家界面" as Front
-component "管理后台界面" as Back
-component "认证与权限" as Auth
-component "商品与审核" as Product
-component "预约与交易" as Booking
-component "举报与站内通知" as Moderation
-component "查询与统计" as Query
-component "操作日志" as Audit
-component "超时任务" as Timeout
+actor 普通用户 as User
+actor 管理员 as Admin
+component "买卖家界面" as Front
+component "管理后台" as Back
+component "权限入口" as Gateway
+package "业务模块" {
+ component "商品与审核" as Product
+ component "预约与交易" as Booking
+ component "举报与通知" as Moderation
+ component "查询与统计" as Query
+ component "操作日志" as Audit
+}
+component "24小时超时任务" as Timeout
+component "数据访问" as Data
 database "业务数据库" as DB
-
-普通用户 --> Front
-管理员 --> Back
-Front --> Auth
-Back --> Auth
-Front --> Product
-Front --> Booking
-Front --> Moderation
-Front --> Query
-Back --> Product
-Back --> Moderation
-Back --> Query
-Back --> Audit
-Booking --> Product : 当前状态校验／同步变更
-Moderation --> Booking : 违规时终止有效预约
-Timeout --> Booking : 24小时未处理取消
-Product --> Audit
-Booking --> Audit
-Moderation --> Audit
-Auth --> DB
-Product --> DB
-Booking --> DB
-Moderation --> DB
-Query --> DB
-Audit --> DB
-note bottom of Booking
-  商品、预约、联系权限和日志更新应在
-  一次业务操作中保持一致。
+User --> Front
+Admin --> Back
+Front --> Gateway
+Back --> Gateway
+Gateway --> Product
+Gateway --> Booking
+Gateway --> Moderation
+Gateway --> Query
+Gateway --> Audit
+Booking --> Product
+Moderation --> Booking
+Timeout --> Booking
+Product --> Data
+Booking --> Data
+Moderation --> Data
+Query --> Data
+Audit --> Data
+Data --> DB
+note bottom of Data
+ 状态更新和日志写入保持一致；
+ 历史预约、举报与日志不物理删除。
 end note
 @enduml
+

@@ -6,7 +6,6 @@ skinparam stateBackgroundColor #F3F8FC
 skinparam stateBorderColor #355C7D
 skinparam ArrowColor #54718B
 skinparam shadowing false
-left to right direction
 [*] --> 草稿 : 卖家创建
 草稿 --> [*] : 卖家物理删除
 草稿 --> 待审核 : 提交审核
@@ -36,3 +35,4 @@ note bottom of 待交易
   预约=待交易；仅交易双方可看联系方式。
 end note
 @enduml
+

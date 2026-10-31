@@ -8,7 +8,7 @@ skinparam ArrowColor #54718B
 skinparam shadowing false
 hide empty methods
 
-enum 商品状态 as ProductStatus {
+enum "商品状态" as ProductStatus {
   草稿
   待审核
   审核驳回
@@ -19,7 +19,7 @@ enum 商品状态 as ProductStatus {
   已售出
   违规下架
 }
-enum 预约状态 as ReservationStatus {
+enum "预约状态" as ReservationStatus {
   待确认
   待交易
   已拒绝
@@ -27,19 +27,19 @@ enum 预约状态 as ReservationStatus {
   超时取消
   已完成
 }
-class 普通用户 as User {
+class "普通用户" as User {
   +用户ID: UUID
   +手机号: String {unique}
   +用户名: String {unique}
   +密码摘要: String
   +联系方式: String
 }
-class 管理员 as Admin {
+class "管理员" as Admin {
   +管理员ID: UUID
   +登录名: String {unique}
   +密码摘要: String
 }
-class 商品 as Product {
+class "商品" as Product {
   +商品ID: UUID
   +卖家ID: UUID
   +标题: String
@@ -50,7 +50,7 @@ class 商品 as Product {
   +版本号: Integer
   +创建时间: DateTime
 }
-class 预约 as Reservation {
+class "预约" as Reservation {
   +预约ID: UUID
   +商品ID: UUID
   +买家ID: UUID
@@ -58,20 +58,20 @@ class 预约 as Reservation {
   +创建时间: DateTime
   +处理时间: DateTime?
 }
-class 举报 as Report {
+class "举报" as Report {
   +举报ID: UUID
   +商品ID: UUID
   +举报人ID: UUID
   +原因: Text
   +结果: String?
 }
-class 站内通知 as Notice {
+class "站内通知" as Notice {
   +通知ID: UUID
   +接收人ID: UUID
   +内容: Text
   +创建时间: DateTime
 }
-class 操作日志 as AuditLog {
+class "操作日志" as AuditLog {
   +日志ID: UUID
   +操作人: String
   +时间: DateTime

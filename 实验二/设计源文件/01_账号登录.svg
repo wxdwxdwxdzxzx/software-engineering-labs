@@ -9,7 +9,6 @@
 <text x="565" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">发布商品</text>
 <text x="710" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的商品</text>
 <text x="855" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">我的预约</text>
-<text x="1000" y="48" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="400" text-anchor="start">管理后台</text>
 <rect x="1220" y="23" width="150" height="32" rx="16" fill="#E9F3EE" stroke="none" stroke-width="1"/><text x="1295.0" y="45" fill="#277450" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="15" font-weight="500" text-anchor="middle">访客</text>
 <text x="45" y="135" fill="#18324A" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" text-anchor="start">注册与登录</text>
 <text x="45" y="167" fill="#617487" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="14" font-weight="400" text-anchor="start">普通用户同一账号可买卖；管理员使用独立后台账号</text>

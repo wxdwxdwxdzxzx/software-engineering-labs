@@ -1,0 +1,39 @@
+@startuml
+title 二手交易系统｜预约竞争与状态校验时序图
+skinparam defaultFontName Microsoft YaHei
+skinparam backgroundColor #FFFFFF
+skinparam sequenceParticipantBackgroundColor #F3F8FC
+skinparam sequenceParticipantBorderColor #355C7D
+skinparam ArrowColor #54718B
+skinparam shadowing false
+autonumber
+actor 买家
+boundary 商品详情页 as UI
+control 预约服务 as Service
+database 商品与预约库 as DB
+control 日志服务 as Log
+
+买家 -> UI : 点击预约
+UI -> Service : 预约(买家ID, 商品ID)
+Service -> DB : 原子检查商品最新状态与现有有效预约
+alt 同一买家已有有效预约（重复点击）
+  DB --> Service : 返回本人现有预约
+  Service --> UI : 已预约成功／请勿重复提交
+else 商品非已发布（旧页面或他人抢先）
+  DB --> Service : 当前状态与预约归属
+  alt 已被其他买家预约
+    Service --> UI : 手慢了，商品已被他人预约
+  else 其他状态变更
+    Service --> UI : 商品状态已变更，当前无法预约；请刷新
+  end
+else 商品仍已发布
+  Service -> DB : 同一事务：创建待确认预约＋商品改已预约
+  DB --> Service : 提交成功
+  Service -> Log : 记录操作人、对象与前后状态
+  Service --> UI : 预约成功；联系方式暂不展示
+end
+note over Service,DB
+  并发请求只能一人成功；失败请求不得创建有效预约。
+  同一商品有效预约数量上限为1。
+end note
+@enduml

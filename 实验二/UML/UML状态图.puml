@@ -1,0 +1,38 @@
+@startuml
+title 二手交易系统｜商品状态图
+skinparam defaultFontName Microsoft YaHei
+skinparam backgroundColor #FFFFFF
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam ArrowColor #54718B
+skinparam shadowing false
+left to right direction
+[*] --> 草稿 : 卖家创建
+草稿 --> [*] : 卖家物理删除
+草稿 --> 待审核 : 提交审核
+待审核 --> 审核驳回 : 管理员驳回
+审核驳回 --> 待审核 : 卖家修改后重提
+待审核 --> 已发布 : 管理员通过
+已发布 --> 待审核 : 修改价格或描述
+已发布 --> 已下架 : 卖家主动下架 [无有效预约]
+已发布 --> 已预约 : 买家预约 [商品仍已发布]
+已预约 --> 已发布 : 卖家拒绝／买家取消／24小时超时
+已预约 --> 待交易 : 卖家同意
+待交易 --> 已发布 : 买家或卖家取消
+待交易 --> 已售出 : 卖家确认线下交易完成
+已发布 --> 违规下架 : 管理员核实违规
+已预约 --> 违规下架 : 管理员核实违规／取消有效预约
+待交易 --> 违规下架 : 管理员核实违规／取消预约并隐藏联系
+note right of 已下架
+  是否可重新上架：待确认。
+end note
+note right of 违规下架
+  终止状态，不得恢复上架。
+end note
+note bottom of 已预约
+  预约=待确认；禁止卖家修改或主动下架。
+end note
+note bottom of 待交易
+  预约=待交易；仅交易双方可看联系方式。
+end note
+@enduml

@@ -1,0 +1,99 @@
+@startuml
+title 二手交易系统｜领域类图
+skinparam defaultFontName Microsoft YaHei
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam ArrowColor #54718B
+skinparam shadowing false
+hide empty methods
+
+enum 商品状态 as ProductStatus {
+  草稿
+  待审核
+  审核驳回
+  已发布
+  已下架
+  已预约
+  待交易
+  已售出
+  违规下架
+}
+enum 预约状态 as ReservationStatus {
+  待确认
+  待交易
+  已拒绝
+  已取消
+  超时取消
+  已完成
+}
+class 普通用户 as User {
+  +用户ID: UUID
+  +手机号: String {unique}
+  +用户名: String {unique}
+  +密码摘要: String
+  +联系方式: String
+}
+class 管理员 as Admin {
+  +管理员ID: UUID
+  +登录名: String {unique}
+  +密码摘要: String
+}
+class 商品 as Product {
+  +商品ID: UUID
+  +卖家ID: UUID
+  +标题: String
+  +描述: Text
+  +分类: String
+  +价格: Decimal
+  +状态: ProductStatus
+  +版本号: Integer
+  +创建时间: DateTime
+}
+class 预约 as Reservation {
+  +预约ID: UUID
+  +商品ID: UUID
+  +买家ID: UUID
+  +状态: ReservationStatus
+  +创建时间: DateTime
+  +处理时间: DateTime?
+}
+class 举报 as Report {
+  +举报ID: UUID
+  +商品ID: UUID
+  +举报人ID: UUID
+  +原因: Text
+  +结果: String?
+}
+class 站内通知 as Notice {
+  +通知ID: UUID
+  +接收人ID: UUID
+  +内容: Text
+  +创建时间: DateTime
+}
+class 操作日志 as AuditLog {
+  +日志ID: UUID
+  +操作人: String
+  +时间: DateTime
+  +类型: String
+  +目标ID: UUID
+  +变更前状态: String?
+  +变更后状态: String?
+}
+User "1" -- "0..*" Product : 发布 >
+User "1" -- "0..*" Reservation : 发起 >
+Product "1" -- "0..*" Reservation : 历史预约 >
+User "1" -- "0..*" Report : 举报 >
+Product "1" -- "0..*" Report : 被举报 >
+User "1" -- "0..*" Notice : 接收 >
+Product --> ProductStatus
+Reservation --> ReservationStatus
+Admin ..> AuditLog : 查询
+Admin ..> Product : 审核
+Admin ..> Report : 处理
+note bottom of Reservation
+  同一商品同时最多一条有效预约。
+  有效状态：待确认、待交易。
+  其余状态为历史终结状态。
+end note
+@enduml

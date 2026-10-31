@@ -78,7 +78,7 @@ uml=[
 for i,(name,desc) in enumerate(uml,1):
     story += [H(f'4.{i}  {name}'),P(desc),figure(BASE/'UML'/f'{name}.png'),P(f'可编辑源文件：UML/{name}.puml；完整分辨率 PNG 同目录。','small'),PageBreak()]
 
-story += [H('5  各模块 UI 设计'),P('在线 Figma/Pixso 未能通过当前浏览器自动化可靠操作，因此使用实际安装的 Inkscape 1.4.4 制作可编辑 SVG 并导出 PNG。界面采用统一的深蓝、浅灰和绿色状态标识。所有金额、统计值、商品和日志行仅为演示样例，不代表真实业务数据。角色可见操作由服务端权限再次约束。')]
+story += [H('5  各模块 UI 设计'),P('在线 Figma/Pixso 未能通过当前浏览器自动化可靠操作。可编辑 SVG 由脚本生成，实际安装的 Inkscape 1.4.4 负责读取 SVG 并导出 PNG；这些界面不是 Figma/Pixso 成果。界面采用统一的深蓝、浅灰和绿色状态标识。所有金额、统计值、商品和日志行仅为演示样例，不代表真实业务数据。角色可见操作由服务端权限再次约束。')]
 ui_desc={
 '01_账号登录':'普通用户手机号登录与注册入口；管理员使用独立入口。重复手机号或用户名应给出明确提示。',
 '02_商品搜索':'关键词、分类、价格区间组合筛选，仅展示当前已发布商品。',
@@ -94,7 +94,7 @@ ui_desc={
 '11_管理统计日志':'管理员查看两项统计口径及按商品、操作人、时间筛选日志。',
 }
 for i,(stem,desc) in enumerate(ui_desc.items(),1):
-    story += [PageBreak(),H(f'5.{i}  {stem}'),P(desc),figure(BASE/'UI界面'/f'{stem}.png',maxw=500,maxh=340),P('设计源文件：设计源文件/'+stem+'.svg；导出图：UI界面/'+stem+'.png。','small')]
+    story += ([PageBreak()] if i > 1 else []) + [H(f'5.{i}  {stem}'),P(desc),figure(BASE/'UI界面'/f'{stem}.png',maxw=500,maxh=340),P('设计源文件：设计源文件/'+stem+'.svg；导出图：UI界面/'+stem+'.png。','small')]
 
 story += [PageBreak(),H('6  需求—设计追踪'),P('下表逐条把实验一 REQ 编号关联到设计模块、UML 和 UI。完整可机读版本在仓库的“实验二/需求设计追踪矩阵.csv”。待确认的 REQ-037、REQ-038 只标设计边界，不视为已确认业务行为。')]
 with (BASE/'需求设计追踪矩阵.csv').open(encoding='utf-8-sig',newline='') as f:

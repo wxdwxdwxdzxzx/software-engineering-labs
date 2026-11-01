@@ -57,6 +57,7 @@ class "预约" as Reservation {
   +状态: ReservationStatus
   +创建时间: DateTime
   +处理时间: DateTime?
+  +到期时间: DateTime
 }
 class "举报" as Report {
   +举报ID: UUID
@@ -95,5 +96,7 @@ note bottom of Reservation
   同一商品同时最多一条有效预约。
   有效状态：待确认、待交易。
   其余状态为历史终结状态。
+  已预约对应待确认；待交易对应待交易。
+  商品为其他状态时不得有有效预约。
 end note
 @enduml

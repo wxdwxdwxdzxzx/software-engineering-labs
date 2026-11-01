@@ -1,37 +1,35 @@
 @startuml
-title 二手交易系统｜商品状态图
+title 商品状态图（一）：发布与审核
 skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 15
 skinparam backgroundColor #FFFFFF
 skinparam stateBackgroundColor #F3F8FC
 skinparam stateBorderColor #355C7D
 skinparam ArrowColor #54718B
 skinparam shadowing false
-skinparam linetype ortho
-skinparam nodesep 55
-skinparam ranksep 55
-top to bottom direction
-
-[*] -down-> 草稿 : 创建
-草稿 -right-> [*]
-草稿 -down-> 待审核 : 提交
-待审核 -down-> 已发布 : 通过
-待审核 -right-> 审核驳回
-审核驳回 -left-> 待审核
-已发布 -up-> 待审核
-已发布 -right-> 已下架
-已发布 -down-> 已预约 : 预约
-已预约 -up-> 已发布
-已预约 -down-> 待交易 : 同意
-待交易 -up-> 已发布
-待交易 -down-> 已售出 : 卖家确认
-已发布 -right-> 违规下架
-已预约 -right-> 违规下架
-待交易 -right-> 违规下架
-
+skinparam nodesep 65
+skinparam ranksep 65
+hide empty description
+[*] --> 草稿 : 创建 [P1]
+草稿 --> [*] : 删除 [P2]
+草稿 --> 待审核 : 提交 [P3]
+待审核 --> 已发布 : 通过 [P4]
+待审核 --> 审核驳回 : 驳回 [P4]
+审核驳回 --> 待审核 : 修改后重提 [P3]
+已发布 --> 待审核 : 修改价格或描述 [P5]
+已发布 --> 已下架 : 主动下架 [P5]
+note bottom of 已发布
+  预约和违规下架的分支见状态图（二）。
+  状态切换与操作日志在同一事务中提交。
+end note
+note bottom of 已下架
+  重新上架规则待确认，当前不提供此操作。
+end note
 legend bottom
-  草稿可删除；审核驳回后修改重提；已发布改价或描述须重审。
-  已预约可因拒绝、买家取消或超时回到已发布；待交易双方均可取消。
-  仅已发布且无有效预约可主动下架；重新上架规则待确认。
-  违规下架同时取消有效预约、隐藏联系方式，且不得恢复上架。
+  P1：普通用户已登录，以卖家身份创建商品。
+  P2：商品归当前卖家，且从未提交过审核。
+  P3：商品归当前卖家，必填信息完整且有效。
+  P4：当前用户为管理员，商品仍处于待审核。
+  P5：商品归当前卖家，仍已发布且无有效预约。
 endlegend
 @enduml

@@ -1,0 +1,40 @@
+@startuml
+title 商品状态图（二）：预约与交易
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 15
+skinparam backgroundColor #FFFFFF
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam ArrowColor #54718B
+skinparam shadowing false
+skinparam nodesep 80
+skinparam ranksep 80
+hide empty description
+state 已发布
+state 已预约
+state 待交易
+state 已售出
+state 违规下架
+已发布 --> 已预约 : 发起预约 [G1]
+已预约 --> 待交易 : 卖家同意 [G2]
+已预约 --> 已发布 : 卖家拒绝 [G2]
+已预约 --> 已发布 : 买家取消 [G3]
+已预约 --> 已发布 : 到期检查 [G4]
+待交易 --> 已发布 : 取消交易 [G5]
+待交易 --> 已售出 : 卖家确认完成 [G6]
+已发布 --> 违规下架 : 核实违规 [G7]
+已预约 --> 违规下架 : 核实违规 [G7]
+待交易 --> 违规下架 : 核实违规 [G7]
+legend bottom
+  R 为当前预约状态；所有条件均在事务内按最新状态校验。
+  G1：买家已登录、非卖家本人，商品仍已发布且无有效预约。
+  G2：商品卖家操作，R=待确认，服务端时间 t < 到期时间 D。
+  G3：预约买家操作，R=待确认，t < D。
+  G4：R=待确认，t >= D；D=预约创建时间+24小时。
+  G5：当前交易买家或卖家操作，R=待交易。
+  G6：商品卖家操作，R=待交易。
+  G7：管理员确认举报违规；商品仍为已发布、已预约或待交易。
+  仅待交易双方可见联系方式；取消、完成或违规后收回可见权限。
+  已售出与违规下架无返回转换，普通下架不提供重新上架。
+endlegend
+@enduml

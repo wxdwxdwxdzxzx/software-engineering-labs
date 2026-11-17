@@ -1,0 +1,51 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 40
+skinparam ranksep 45
+title 组件图：桌面界面、业务服务与持久化
+package "Tkinter / ttk" {
+ [普通用户界面\n发现、发布、消息、交易、个人中心] as U
+ [管理员工作台] as UA
+}
+package "Python 业务服务" {
+ [Auth / Accounts\n会话、权限、资料与分类] as A
+ [Products / Reports\n商品审核与举报] as P
+ [Bookings / Delivery\n预约、邮寄与面交履约] as B
+ [Addresses / Places / Handoff\n收发地址、面交地点与协商] as H
+ [Social / Messaging / Reviews\n收藏、咨询与评价] as I
+ [Queries\n权限白名单、搜索与统计] as Q
+}
+[Store + Service\n取锁、版本、幂等与状态同步] as D
+database "SQLite\n业务数据、图片BLOB、快照与日志" as DB
+U --> A
+U --> P
+U --> B
+U --> H
+U --> I
+U --> Q
+UA --> P
+UA --> Q
+UA --> A
+B --> H
+A --> D
+P --> D
+B --> D
+H --> D
+I --> D
+Q --> D
+D --> DB
+legend bottom
+  写入在BEGIN IMMEDIATE事务中重新校验，成功变更与通知、日志一同提交。
+  界面不直接改表；履约细分状态与原商品、预约状态同步。
+endlegend
+@enduml

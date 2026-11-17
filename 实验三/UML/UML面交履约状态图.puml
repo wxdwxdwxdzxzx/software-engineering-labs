@@ -1,0 +1,41 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 40
+skinparam ranksep 45
+title 面交履约状态图（新订单）
+hide empty description
+state "待卖家确认" as W
+state "面交中" as M
+state "待面交确认" as H
+state "已完成" as C
+state "意向终止" as X
+state "退回/丢失结案" as E
+[*] --> W : 预约 [支持面交、非自购、商品可用]
+W --> M : 卖家同意 [t<D、约定时间合法]
+W --> X : 买家取消/卖家拒绝 [t<D]\n超时 [t>=D]；核实违规 [管理员]
+M --> H : 卖家发起完成 [当前面交中、无未结异常]
+M --> X : 任一方取消 [面交中]\n核实违规 [管理员、仍面交中]
+H --> C : 买家确认实物交接 [仍待面交确认、无未结异常]
+M --> M : 提议地点/时间变更 [一方提议]\n同意变更 [对方确认、仍面交中]
+H --> H : 核实举报 [管理员] / 仅禁售，保留履约
+M --> E : 双方确认异常结案 [F1]
+H --> E : 双方确认异常结案 [F1]
+legend bottom
+  任意写入先鉴权、取锁、检查版本。面交不要求收货地址、不收运费。
+  F1：存在异常协商，一方提出、另一方确认；退回须卖家收回实物。
+  面交中/待面交确认为商品待交易+预约待交易，后者只读约定、不可直接取消或改约。
+  旧legacy面交保留卖家完成规则；新订单不得通过旧接口直接完成。
+  取消、完成后关闭具体地点和联系方式；快照与协商历史保留。
+  方案接收方可拒绝，提出方可撤回方案；异常仅发起人可撤回，不直接完成交接。
+endlegend
+@enduml

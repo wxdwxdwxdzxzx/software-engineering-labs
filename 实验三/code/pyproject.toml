@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools==84.2.1", "wheel==0.48.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shiguang-secondhand-market"
+version = "0.4.0"
+description = "Transactional secondhand marketplace desktop application"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["Pillow>=12.2,<14"]
+
+[project.scripts]
+secondhand-market = "marketplace.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]

@@ -1,0 +1,2 @@
+# Preserve bundled third-party runtime bytes and avoid treating them as authored text.
+运行程序/** binary

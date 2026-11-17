@@ -1,0 +1,47 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 40
+skinparam ranksep 45
+title 举报核实与商品公开、在途履约分离
+start
+:管理员打开待处理举报并填写理由;
+:BEGIN IMMEDIATE，校验权限、最新版本及举报状态;
+if (确认违规？) then (否)
+ :举报=已驳回，商品与履约保持;
+else (是)
+ if (商品已售出？) then (是)
+  :核实并结案存证；保留已完成与已售出;
+ else (否)
+  if (当前已发货或待面交确认？) then (是)
+   :设置listing_blocked=1，停止公开发现;
+   :保留商品待交易、有效预约、运单、协商和交易沟通;
+  else (否)
+   if (商品已主动或违规下架？) then (是)
+    :核实举报；保留停售状态，不恢复销售;
+   else (公开/预约/重审/驳回/发货前)
+    :商品=违规下架，终止有效预约;
+    :关闭私密信息，待确认地址和交接变更失效;
+   endif
+  endif
+ endif
+endif
+:保存处理人、时间和理由;
+:通知该举报人、追加日志、提交事务;
+:其他举报分别核实，各自通知；不得混同事实;
+stop
+legend bottom
+  账号限制不阻断既有订单发货、收货、协商和交易咨询。
+  待处理举报禁止审核通过；已有重审举报可正常结案。
+  未执行真实支付、退款或物流签收查询。
+endlegend
+@enduml

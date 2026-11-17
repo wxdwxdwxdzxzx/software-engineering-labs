@@ -1,0 +1,52 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 40
+skinparam ranksep 45
+title 预约状态与商品同步
+hide empty description
+state "待确认\n商品=已预约" as W
+state "待交易\n商品=待交易" as T
+state "已拒绝/已取消/超时取消\n商品=已发布" as X
+state "已取消（违规终止）\n商品=违规下架" as V
+state "已取消（退回结案）\n商品=已下架，重售须审核" as B
+state "已取消（丢失结案）\n商品=违规下架，永久禁售" as L
+state "已完成\n商品=已售出" as C
+[*] --> W : 成功预约 [R1]
+W --> T : 卖家同意 [R2]
+W --> X : 买家取消/卖家拒绝 [R3]\n系统超时 [R4]
+W --> V : 管理员核实违规 [R5]
+T --> X : 双方任一方取消 [R6、无禁售标记]
+T --> V : 发货前核实违规 [R5]\n取消 [R6、有禁售标记]
+T --> B : 双方确认退回结案 [R7、无禁售标记]
+T --> V : 双方确认退回结案 [R7、有禁售标记]
+T --> L : 双方确认丢失结案 [R7]
+T --> C : 交付完成确认 [R8]
+T --> T : 邮寄发货/面交发起完成/异常协商 [R9]
+C --> C : 提交评价/管理员争议结案 [R10]
+legend bottom
+  写入先取锁，校验角色、归属和商品版本。未画转换禁止；终结记录不能重新激活。
+  R1：正常普通账号、非自购、商品已发布、无有效预约、方式与地址合法。
+  R2：对应卖家、仍待确认、t<D。R3：对应买家/卖家、仍待确认、t<D。
+  R4：原预约仍待确认、t>=D，D=创建+24小时，日志操作人SYSTEM。
+  R5：管理员、待处理举报属实，履约仍待卖家确认/待发货/面交中；预约取消，商品违规下架。
+  R6：当前双方且待发货或面交中；或管理员在发货前核实违规。禁止在途直接取消。
+  R7：存在异常协商，履约为待发货/已发货/面交中/待面交确认；一方提议、另一方确认。
+  方案接收方可拒绝，提出方可撤回方案；仅异常发起人可撤回未结异常，均不直接释放商品。
+  退回须卖家已收回实物：通常商品已下架；已有禁售标记则违规下架，不自动重卖。
+  丢失结案：预约已取消，商品违规下架并标记禁售，不再允许恢复销售。
+  R8：新邮寄由买家确认收货，新面交由卖家发起后买家确认；legacy旧面交允许卖家。
+  R9：细分履约状态与条件见邮寄、面交履约状态图；预约始终有效，不释放商品。
+  R10：真实完成交易双方各一条评价；管理员争议仅结案存证，不改终态。
+  在途举报只禁售，仍保留交易沟通、物流和协商；所有成功变更与通知、日志同提交。
+endlegend
+@enduml

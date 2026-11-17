@@ -1,0 +1,85 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 45
+skinparam ranksep 50
+title 核心数据关系及约束
+hide methods
+class User {
+id: PK
+phone / username: UNIQUE
+role / status / session_epoch
+nickname / bio / region
+contact: private
+}
+class Product {
+id: PK
+seller_id: FK
+state / version
+price_cents / price_missing
+condition / brand / published_at
+origin_city / origin_district / handoff_method
+free_shipping / freight_cents / listing_blocked
+meeting_region: public
+meeting_point / note: private
+}
+class ProductPhoto {
+id: PK
+product_id / position: UNIQUE
+content / thumbnail: BLOB
+position: 0..5
+}
+class Reservation {
+id: PK
+product_id / buyer_id: FK
+state / deadline / finished_at
+text / price / identity snapshots
+original handoff snapshot
+}
+class ReservationPhoto {
+reservation_id / position: PK
+content / thumbnail: BLOB
+immutable
+}
+class HandoffChange {
+id: PK
+reservation_id / proposer_id: FK
+region / point / time / note
+state / handled_at
+}
+class Report {
+id: PK
+product_id / reporter_id: FK
+snapshot_title / reason
+state / handled_by / handled_at
+}
+class BusinessNotice {
+id: PK
+user_id / event_key: UNIQUE
+content / created_at / read_at
+}
+User "1" -- "0..*" Product : 发布
+User "1" -- "0..*" Reservation : 预约
+Product "1" -- "0..6" ProductPhoto
+Product "1" -- "0..*" Reservation
+Reservation "1" -- "0..6" ReservationPhoto
+Reservation "1" -- "0..*" HandoffChange
+Product "1" -- "0..*" Report
+User "1" -- "0..*" BusinessNotice
+legend bottom
+  商品最多一条状态为待确认/待交易的有效预约，由部分唯一索引保障。
+  有效预约包括待发货、已发货和待面交确认；履约详细结构见交付数据类图。
+  一预约最多一条待确认交接变更；新约定由对方确认后生效。
+  预约与图片快照不可更新/删除。历史记录持久保留。
+  图片在数据库内，升级备份包含恢复所需图片，无原文件路径依赖。
+endlegend
+@enduml

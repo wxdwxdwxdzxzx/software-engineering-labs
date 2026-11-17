@@ -1,0 +1,46 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 45
+skinparam ranksep 50
+title 商品发布、重审与恢复
+hide empty description
+[*] --> 草稿 : 创建 [P1]
+草稿 --> 草稿 : 保存编辑 [P2]
+草稿 --> [*] : 删除 [P3]
+草稿 --> 待审核 : 提交 [P4]
+待审核 --> 已发布 : 通过 [P5]
+待审核 --> 审核驳回 : 驳回 [P6]
+审核驳回 --> 审核驳回 : 保存修订 [P2]
+审核驳回 --> 待审核 : 重提 [P4]
+已发布 --> 待审核 : 保存修改 [P7]
+已发布 --> 已下架 : 主动下架 [P7]
+已下架 --> 待审核 : 申请重上架 [P4]
+待审核 --> 违规下架 : 核实举报 [P8]
+审核驳回 --> 违规下架 : 核实举报 [P8]
+已发布 --> 违规下架 : 核实举报 [P8]
+违规下架 --> 违规下架 : 申请恢复 [P9]\n拒绝恢复 [P11]
+违规下架 --> 待审核 : 批准恢复 [P10]
+legend bottom
+  所有写操作同时校验角色、商品归属及版本；未画出的转换禁止。
+  卖家主动发布/编辑需账号正常；管理员批准发布还须卖家正常。
+  P1：普通用户登录，可保存不完整草稿。P2：本人，字段与图片合法。
+  P3：本人，且从未提交审核。P4：本人，必填完整、分类启用。
+  P5：管理员，仍待审核，无待处理举报。P6：管理员，填写处理理由。
+  P7：本人，仍已发布且无有效预约；修改提交需完整校验。
+  P8：管理员，已有待处理举报，按当前版本核实属实。
+  P9：本人，仍违规下架，填写说明，最多一条待处理恢复申请。
+  P10：管理员，仍违规下架，恢复申请待处理，无待处理举报，且不是丢失结案商品。
+  P11：管理员，恢复申请仍待处理，填写拒绝理由。
+  有效预约中禁止编辑和主动下架；预约分支见交易状态图。
+endlegend
+@enduml

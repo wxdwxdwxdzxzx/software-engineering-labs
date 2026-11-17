@@ -1,0 +1,9 @@
+include run.py requirements-dev.txt requirements-exe.txt
+include tools/tasks.py tools/build_windows.py
+prune tests
+prune docs
+prune .local
+prune build
+exclude pytest.ini requirements-test-local.txt
+global-exclude *.py[cod]
+global-exclude .coverage*

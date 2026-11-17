@@ -1,0 +1,54 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 40
+skinparam ranksep 45
+title 邮寄订单的预约、发货与完成
+actor 买家 as Buyer
+actor 卖家 as Seller
+boundary "Tk桌面界面" as UI
+control "Bookings / Delivery" as S
+database SQLite as DB
+Buyer -> UI : 选择邮寄与本人收货地址，确认金额
+UI -> S : reserve(token,id,version,key,mode,address)
+S -> DB : BEGIN IMMEDIATE；鉴权、最新状态、期限与版本
+alt 同一请求已成功
+ S -> DB : 核对请求内容指纹，读取原结果
+else 新预约且商品可用
+ S -> DB : 保存预约、价格/运费/地址/商品/图片快照
+ S -> DB : 商品=已预约；预约=待确认；履约=待卖家确认
+ S -> DB : 写通知、日志与请求映射；校验状态一致
+else 自购、占用、旧页面或参数无效
+ S -> DB : 拒绝业务变更；保留必要的超时处理
+end
+S -> DB : 提交事务（拒绝分支仅保留应执行的超时变更）
+S --> UI : 预约结果或具体失败原因
+Seller -> UI : 同意邮寄预约
+UI -> S : act_reservation(agree)
+S -> DB : 取锁、角色/版本/24小时检查
+S -> DB : 商品/预约=待交易；履约=待发货，通知日志同提交
+Seller -> UI : 填写本人发货地址、快递公司和运单号
+UI -> S : ship(version,key,...)
+S -> DB : 取锁；待发货、无地址待确认、未禁售
+S -> DB : 追加运单事件；履约=已发货；COMMIT
+S --> UI : 已发货；显示卖家录入信息
+Buyer -> UI : 收到实物后确认收货
+UI -> S : confirm_receipt(version,key)
+S -> DB : 核对买家、已发货、无未结异常
+S -> DB : 商品=已售出；预约/履约=已完成；通知日志同提交
+S --> UI : 完成；开放评价，卖家收件信息隐藏
+note over UI,DB
+  发货后旧取消和卖家完成接口均拒绝。
+  运单仅手动录入，无真实物流轨迹或自动签收。
+  幂等请求先返回原结果；其余旧版本不能覆盖当前状态。
+end note
+@enduml

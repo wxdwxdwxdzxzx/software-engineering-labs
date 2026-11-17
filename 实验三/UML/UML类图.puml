@@ -1,0 +1,108 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 45
+skinparam ranksep 50
+title 实现类图：业务分层与服务接口
+left to right direction
+class Market {
++auth / accounts / products / bookings
++social / messaging / handoff / reviews
++reports / queries / places / addresses / delivery
+}
+class Store {
++connect()
++transaction()
+}
+class Auth {
++register()
++login() / require()
++provision_admin()
+}
+abstract class Service {
++execute() / change()
++check_version()
++sweep()
+}
+class Products {
++create_draft() / edit_product()
++submit() / review() / relist()
++request_restore() / resolve_restore()
+}
+class Bookings {
++reserve()
++act_reservation()
++handoff() / snapshot_photos()
+}
+class Reports {
++report_product()
++resolve_report()
+}
+class Queries {
++search() / detail()
++seller_profile()
++statistics() / logs()
+}
+class Accounts {
++profile() / update()
++change_password()
++set_status() / save_category()
+}
+class Social {
++favorite() / viewed() / follow()
++products() / follows()
+}
+class Messaging {
++open() / send()
++messages() / notices() / unread()
+}
+class Handoff {
++propose() / decide()
++changes()
+}
+class Reviews {
++submit() / public()
++report() / resolve()
+}
+class Places {
++list() / save() / delete()
+}
+class Addresses {
++list() / save() / delete() / default()
+}
+class Deliveries {
++ship() / correct_tracking() / confirm()
++propose_address() / decide_address()
++open_issue() / resolve_issue() / detail()
+}
+Market *-- Store
+Market *-- Auth
+Market *-- Service : 装配12类业务服务
+Service --> Store : 同一事务内校验与写入
+Service --> Auth : 会话与角色校验
+Service <|-- Products
+Service <|-- Bookings
+Service <|-- Reports
+Service <|-- Queries
+Service <|-- Accounts
+Service <|-- Social
+Service <|-- Messaging
+Service <|-- Handoff
+Service <|-- Reviews
+Service <|-- Places
+Service <|-- Addresses
+Service <|-- Deliveries
+legend bottom
+  普通用户买卖身份由商品归属和预约参与关系确定，不创建互斥角色。
+  UI仅调用服务；新业务与原预约共用SQLite事务、版本和鉴权。
+endlegend
+@enduml

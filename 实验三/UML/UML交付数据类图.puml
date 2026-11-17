@@ -1,0 +1,75 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 40
+skinparam ranksep 45
+title 交付数据及隐私快照
+hide methods
+class Address {
+id: PK
+owner_id / kind: 收货或发货
+recipient / telephone
+province / city / district / detail
+is_default: 每人每用途唯一
+}
+class Reservation {
+id: PK
+product_id / buyer_id: FK
+state / deadline
+商品、价格、身份、图片快照
+}
+class DeliveryOrder {
+reservation_id: PK, FK
+mode / phase / legacy
+goods_cents / freight_cents
+receiver_json: 原始收货快照
+shipped_at / received_at
+handoff_requested_at
+}
+class AddressChange {
+id: PK
+reservation_id / proposer_id
+address_json / state
+handled_by / handled_at
+}
+class ShipmentEvent {
+id: PK
+reservation_id / actor_id
+carrier / tracking_number
+kind / reason / created_at
+sender_json: 发货快照
+}
+class DeliveryIssue {
+id: PK
+reservation_id / opened_by
+category / description / state
+proposal / proposed_by
+seller_received / handled_by
+}
+class DeliveryRequest {
+reservation_id / actor_id / request_key: PK
+fingerprint / result_json
+}
+Reservation "1" *-- "1" DeliveryOrder
+DeliveryOrder "1" -- "0..*" AddressChange
+DeliveryOrder "1" -- "0..*" ShipmentEvent
+DeliveryOrder "1" -- "0..*" DeliveryIssue
+DeliveryOrder "1" -- "0..*" DeliveryRequest
+Address ..> DeliveryOrder : 创建时复制，不依赖原地址存续
+Address ..> AddressChange : 复制后等待卖家确认
+legend bottom
+  原始金额、交付方式和收货快照不可更新；运单更正追加历史，不覆盖原记录。
+  买家可查自己的收货信息；卖家仅在待交易期间可查必要收件信息，终结后隐藏。
+  发货地址完整内容只属卖家，对方只见城市区县。日志、通知不含完整地址电话。
+  旧预约只建立legacy面交关联，不伪造缺失的邮寄信息。
+endlegend
+@enduml

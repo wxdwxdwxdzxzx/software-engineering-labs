@@ -1,0 +1,36 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 45
+skinparam ranksep 45
+title 履约异常协商与处理权限
+hide empty description
+state "协商中\n尚无方案" as O
+state "协商中\n待另一方确认方案" as P
+state "已撤回" as W
+state "已协商结案" as C
+state "随订单终止" as T
+[*] --> O : 当前交易方反馈异常 [订单处于允许的履约阶段]
+O --> P : 当前交易方提出方案 [尚无方案]
+P --> O : 方案接收方拒绝 [非方案提出人]
+P --> O : 方案提出方撤回 [本人提议]
+O --> W : 异常发起人撤回 [异常仍未结]
+P --> W : 异常发起人撤回 [包括已有对方提议]
+P --> C : 方案接收方确认 [方案一致；退回须卖家已收回实物]
+O --> T : 订单合法终止 [尚未发货等原有允许条件]
+P --> T : 订单合法终止 [尚未发货等原有允许条件]
+legend bottom
+  本图描述异常记录；商品、预约与履约状态另行同步，不由此图的视觉终态代替。
+  拒绝或撤回方案后仍有未结异常，可以重新提议；在途商品继续锁定。
+  撤回异常只解除协商阻塞，不自动收货、退款或恢复商品销售。
+  确认继续履约保持订单阶段；退回通常停售待重审，禁售标记仍生效；丢失永久禁售。
+  每次写入均在事务中验证当前参与者与最新商品版本，不能确认自己的方案。
+  同一请求标识返回原结果；旧页面和竞争失败须刷新，失败不留下部分修改。
+  方案前后内容、操作角色与时间保留在记录中，原始异常及历史订单不删除。
+endlegend
+@enduml

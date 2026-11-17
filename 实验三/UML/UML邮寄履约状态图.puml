@@ -1,0 +1,44 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam defaultFontSize 14
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam ArrowColor #54718B
+skinparam classBackgroundColor #F3F8FC
+skinparam classBorderColor #355C7D
+skinparam componentBackgroundColor #F3F8FC
+skinparam componentBorderColor #355C7D
+skinparam stateBackgroundColor #F3F8FC
+skinparam stateBorderColor #355C7D
+skinparam nodesep 40
+skinparam ranksep 45
+title 邮寄履约状态图
+hide empty description
+state "待卖家确认" as W
+state "待发货" as P
+state "已发货" as S
+state "已完成" as C
+state "意向终止" as X
+state "退回/丢失结案" as E
+[*] --> W : 预约 [支持邮寄、本人地址、价格快照已核对]
+W --> P : 卖家同意 [待确认且t<D]
+W --> X : 买家取消/卖家拒绝 [t<D]\n超时 [t>=D]；核实违规 [管理员]
+P --> S : 卖家发货 [F1]
+P --> X : 任一方取消 [仍待发货]\n核实违规 [管理员、仍未发货]
+S --> C : 买家确认收到实物 [F2]
+S --> S : 更正运单 [卖家、填写原因]\n核实举报 [管理员] / 仅禁售
+P --> P : 更正地址 [买家提议、卖家确认]
+P --> E : 双方确认异常结案 [F3]
+S --> E : 双方确认异常结案 [F3]
+legend bottom
+  任意变更：当前参与者或有权管理员，事务内核对最新版本与状态。
+  F1：快递公司、有效运单、本人发货地址、无地址更正待确认且未禁售。
+  F2：仍已发货且无未结异常；卖家无权确认收货。快递签收与买家确认独立。
+  F3：一方提出、另一方确认；退回须卖家明确已收回实物。
+  待发货/已发货均为商品待交易+预约待交易；完成为已售出+已完成。
+  已发货禁止直接取消与改写收货地址，异常协商期间继续锁定商品。
+  方案可由接收方拒绝或提出方撤回；异常发起人可撤回未结异常，均不自动完成订单。
+  退回后停售，重新销售需审核；丢失结案永久禁售。不执行线上退款。
+  运单为卖家手动录入，不生成真实物流轨迹。原记录及价格、地址快照保留。
+endlegend
+@enduml
